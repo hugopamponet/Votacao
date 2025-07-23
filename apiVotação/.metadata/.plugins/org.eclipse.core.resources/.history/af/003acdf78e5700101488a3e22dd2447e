@@ -1,0 +1,5 @@
+package br.com.api.votacao.DTO;
+
+public class VotacaoDTO {
+
+}

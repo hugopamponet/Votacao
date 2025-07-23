@@ -1,0 +1,33 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const usuario = document.querySelector("#usuario").value;
+    const senha = document.querySelector("#senha").value;
+
+    try {
+      const response = await fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ usuario, senha })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert("Login bem-sucedido!");
+		
+        console.log(data);
+      } else {
+        const error = await response.text();
+        alert("Login falhou: " + error);
+      }
+    } catch (error) {
+      console.error("Erro ao conectar com a API:", error);
+      alert("Erro de conexão com o servidor.");
+    }
+  });
+});

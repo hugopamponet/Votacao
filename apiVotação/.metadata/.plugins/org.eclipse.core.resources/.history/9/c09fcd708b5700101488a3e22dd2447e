@@ -1,0 +1,15 @@
+package br.com.api.votacao.Model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "votacao")
+public class VotacaoModel {
+	
+	private Long id;
+	
+	public String sim;
+	public String nao;
+
+}

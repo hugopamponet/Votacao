@@ -1,0 +1,17 @@
+package br.com.api.votacao.Model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class AssociadosModel {
+	
+	@Id
+	private Long id;
+	
+	public String nome;
+	public String email;
+	public Long cpf;
+	public String empresa;
+
+}

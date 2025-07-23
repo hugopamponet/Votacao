@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #004080;
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td::before {
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  td:nth-of-type(1)::before { content: "Empresa"; }
+  td:nth-of-type(2)::before { content: "Pauta"; }
+  td:nth-of-type(3)::before { content: "Tempo"; }
+}

@@ -1,0 +1,39 @@
+package br.com.api.votacao.Model;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "pauta")
+public class PautaModel {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long id;
+	
+	@Column(name = "nome", unique = true)
+	public String nome;
+	
+	@Column(name = "pauta", unique = true)
+	public String pauta;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getPauta() {
+		return pauta;
+	}
+
+	public void setPauta(String pauta) {
+		this.pauta = pauta;
+	}
+}

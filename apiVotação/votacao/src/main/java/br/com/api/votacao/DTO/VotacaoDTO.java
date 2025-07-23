@@ -1,0 +1,20 @@
+package br.com.api.votacao.DTO;
+
+public class VotacaoDTO {
+	
+	public String sim;
+	public String nao;
+	
+	public String getSim() {
+		return sim;
+	}
+	public void setSim(String sim) {
+		this.sim = sim;
+	}
+	public String getNao() {
+		return nao;
+	}
+	public void setNao(String nao) {
+		this.nao = nao;
+	}
+}
