@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/INFORME_SEU_BANCO?useSSL=false&serverTimezone=America/Sao_Paulo
+    url: jdbc:mysql://localhost:3306/apivotacao?useSSL=false&serverTimezone=America/Sao_Paulo
     username: root
-    password: *****
+    password: Hu93209147@
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

@@ -1,5 +1,7 @@
 package br.com.api.votacao.model;
 
+import java.time.LocalDate;
+
 import br.com.api.votacao.enumeration.SexoEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,54 +15,49 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "associados")
 public class AssociadosModel {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "associado", unique = true)
-	public String nome;
+	@Column(name = "name")
+	private String name;
 	
-	@Column(name = "dtnascimento", unique = true)
-	public String nascimento;
+	@Column(name = "dtaNascimento")
+	private LocalDate nascimento;
 	
-	@Column(name = "sexo", unique = true)
 	@Enumerated(EnumType.STRING)
-	public SexoEnum sexo;
+	@Column(name = "sexo")
+	private SexoEnum sexo;
 	
-	@Column(name = "email", unique = true)
-	public String email;
+	@Column(name = "email")
+	private String email;
 	
-	@Column(name = "cpf", unique = true)
-	public String cpf;
+	@Column(name = "cpf")
+	private String cpf;
 	
-	@Column(name = "empresa", unique = true)
-	public String empresa;
+	@Column(name = "user")
+	private String user;
 	
-	@Column(name ="senha", unique = true)
-	public String senha;
+	@Column(name = "empresa")
+	private String empresa;
+	
+	@Column(name = "senha")
+	private String senha;
 
-	public String getCpf() {
-		return cpf;
+	public String getName() {
+		return name;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getNascimento() {
+	public LocalDate getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(String nascimento) {
+	public void setNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
 	}
 
@@ -80,6 +77,22 @@ public class AssociadosModel {
 		this.email = email;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
 	public String getEmpresa() {
 		return empresa;
 	}
@@ -94,5 +107,5 @@ public class AssociadosModel {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
+	}	
 }
