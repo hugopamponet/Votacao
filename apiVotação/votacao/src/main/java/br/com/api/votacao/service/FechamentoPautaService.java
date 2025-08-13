@@ -21,9 +21,9 @@ public record FechamentoPautaService(PautaRepository pautaRepository, VotacaoRep
 	@Scheduled(fixedRate = 10000)
 	public void verificarPautas() {
 		LocalDateTime agora = LocalDateTime.now();
-		List<PautaModel> abertas = pautaRepository.findByStatus("Aberta");
+		List<PautaModel> aberta = pautaRepository.findByStatus("Aberta");
 		
-		for(PautaModel pauta : abertas) {
+		for(PautaModel pauta : aberta) {
 			if(pauta.getTempoPauta().plusMinutes(1).isBefore(agora)) {
 				pauta.setStatus("Fechada");
 				pautaRepository.save(pauta);
@@ -35,8 +35,8 @@ public record FechamentoPautaService(PautaRepository pautaRepository, VotacaoRep
 	private void contabilizarVotos(PautaModel pauta) {
 		List<VotacaoModel> votos = votacaoRepository.findByPauta(pauta);
 		
-		long sim = votos.stream().filter(v -> v.getVotacao() == VotingEnum.Sim).count();
-		long nao = votos.stream().filter(v -> v.getVotacao() == VotingEnum.Nao).count();
+		long sim = votos.stream().filter(v -> VotingEnum.Sim.equals(v.getVotacao())).count();
+		long nao = votos.stream().filter(v -> VotingEnum.Nao.equals(v.getVotacao())).count();
 		
 		System.out.println("Resultado da pauta '" + pauta.getTitulo() + "': SIM = " + sim + " | NÃO = " + nao);
 	}

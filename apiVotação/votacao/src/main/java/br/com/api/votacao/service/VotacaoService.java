@@ -1,6 +1,7 @@
 package br.com.api.votacao.service;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import br.com.api.votacao.DTO.VotacaoDTO;
 import br.com.api.votacao.model.PautaModel;
@@ -8,6 +9,7 @@ import br.com.api.votacao.model.VotacaoModel;
 import br.com.api.votacao.repository.PautaRepository;
 import br.com.api.votacao.repository.VotacaoRepository;
 
+@Service
 public record VotacaoService(VotacaoRepository votacaoRepository, PautaRepository pautaRepository) {
 
 	public ResponseEntity<String> registroVoto(String pautaId, VotacaoDTO dto) {

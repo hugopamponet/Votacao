@@ -30,8 +30,9 @@ public class AssociadosModel {
 	@Column(name = "dtaNascimento")
 	private LocalDate nascimento;
 	
-	@Enumerated(EnumType.STRING)
+	
 	@Column(name = "sexo")
+	@Enumerated(EnumType.STRING)
 	private SexoEnum sexo;
 	
 	@Column(name = "email")
