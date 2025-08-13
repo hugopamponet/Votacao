@@ -40,7 +40,7 @@ public record PautaController(PautaService pautaService, PautaRepository pautaRe
 	@GetMapping("/{id}/resultado")
 	public ResponseEntity<String> resultadoPauta(@PathVariable String id) {
 		return pautaRepository.findById(id).map(pauta -> {
-			if (!"FECHADA".equals(pauta.getStatus())) {
+			if (!"Fechada".equals(pauta.getStatus())) {
 				return ResponseEntity.badRequest().body("A pauta ainda está aberta para votação.");
 			}
 

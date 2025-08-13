@@ -7,13 +7,13 @@
 	},
 	"item": [
 		{
-			"name": "Register",
+			"name": "Cadastrar",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"teste\",\r\n    \"nascimento\": \"2025-01-12\",\r\n    \"sexo\": \"Feminino\",\r\n    \"email\": \"teste@associado.com\",\r\n    \"cpf\": \"00000000000\",\r\n    \"user\": \"teste\",\r\n    \"empresa\": \"teste\",\r\n    \"senha\": \"1234567\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Hugo Pamponet\",\r\n    \"nascimento\": \"2025-01-12\",\r\n    \"sexo\": \"Masculino\",\r\n    \"email\": \"hugo.pamponet@associado.com\",\r\n    \"cpf\": \"00000000000\",\r\n    \"empresa\": \"backend\",\r\n    \"user\": \"hugo.pamponet\",\r\n    \"senha\": \"1234567\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"user\": \"teste\",\r\n    \"senha\": \"1234567\"\r\n}",
+					"raw": "{\r\n    \"user\": \"hugo.pamponet\",\r\n    \"senha\": \"1234567\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,6 +59,129 @@
 					"path": [
 						"auth",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar pauta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Aumento\",\r\n  \"descricao\": \"Votação\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pauta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Votação",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"votacao\": \"Nao\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/votacao/07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"votacao",
+						"07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Votação",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Aumento do orçamento\",\r\n  \"descricao\": \"Votação sobre aumento\",\r\n  \"tempoPauta\": \"2025-08-12T00:17:00\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/votacao",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"votacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Pauta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pauta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resultado da votação",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pauta/07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8/resultado",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pauta",
+						"07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8",
+						"resultado"
 					]
 				}
 			},

@@ -16,34 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `associados`
+-- Table structure for table `pauta`
 --
 
-DROP TABLE IF EXISTS `associados`;
+DROP TABLE IF EXISTS `pauta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `associados` (
+CREATE TABLE `pauta` (
   `id` varchar(255) NOT NULL,
-  `cpf` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `empresa` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `dta_nascimento` date DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `sexo` enum('Feminino','Masculino') DEFAULT NULL,
-  `user` varchar(255) DEFAULT NULL,
+  `descricao` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `tempo_pauta` datetime(6) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `associados`
+-- Dumping data for table `pauta`
 --
 
-LOCK TABLES `associados` WRITE;
-/*!40000 ALTER TABLE `associados` DISABLE KEYS */;
-INSERT INTO `associados` VALUES ('694c32d8-1482-4be8-9038-dd5965cdef15','00000000000','hugo.pamponet@associado.com','backend','Hugo Pamponet','2025-01-12','1234567',NULL,'hugo.pamponet');
-/*!40000 ALTER TABLE `associados` ENABLE KEYS */;
+LOCK TABLES `pauta` WRITE;
+/*!40000 ALTER TABLE `pauta` DISABLE KEYS */;
+INSERT INTO `pauta` VALUES ('07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8','Votação','Fechada','2025-08-12 22:59:46.424908','Aumento'),('9627e954-fb5e-49a7-8237-354a7fb1ac24','Votação sobre aumento','Fechada','2025-08-12 22:50:35.729565','Aumento do orçamento');
+/*!40000 ALTER TABLE `pauta` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

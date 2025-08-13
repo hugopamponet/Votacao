@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
 import br.com.api.votacao.enumeration.VotingEnum;
 import br.com.api.votacao.model.PautaModel;
@@ -11,6 +12,7 @@ import br.com.api.votacao.model.VotacaoModel;
 import br.com.api.votacao.repository.PautaRepository;
 import br.com.api.votacao.repository.VotacaoRepository;
 
+@Service
 public record FechamentoPautaService(PautaRepository pautaRepository, VotacaoRepository votacaoRepository) {
 
 	public FechamentoPautaService(PautaRepository pautaRepository, VotacaoRepository votacaoRepository) {

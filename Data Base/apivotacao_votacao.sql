@@ -16,34 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `associados`
+-- Table structure for table `votacao`
 --
 
-DROP TABLE IF EXISTS `associados`;
+DROP TABLE IF EXISTS `votacao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `associados` (
+CREATE TABLE `votacao` (
   `id` varchar(255) NOT NULL,
-  `cpf` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `empresa` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `dta_nascimento` date DEFAULT NULL,
-  `senha` varchar(255) DEFAULT NULL,
-  `sexo` enum('Feminino','Masculino') DEFAULT NULL,
-  `user` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `votacao` enum('Nao','Sim') DEFAULT NULL,
+  `pauta_id` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK9pch705ooj8xj4lo07f85eu5m` (`pauta_id`),
+  CONSTRAINT `FK9pch705ooj8xj4lo07f85eu5m` FOREIGN KEY (`pauta_id`) REFERENCES `pauta` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `associados`
+-- Dumping data for table `votacao`
 --
 
-LOCK TABLES `associados` WRITE;
-/*!40000 ALTER TABLE `associados` DISABLE KEYS */;
-INSERT INTO `associados` VALUES ('694c32d8-1482-4be8-9038-dd5965cdef15','00000000000','hugo.pamponet@associado.com','backend','Hugo Pamponet','2025-01-12','1234567',NULL,'hugo.pamponet');
-/*!40000 ALTER TABLE `associados` ENABLE KEYS */;
+LOCK TABLES `votacao` WRITE;
+/*!40000 ALTER TABLE `votacao` DISABLE KEYS */;
+INSERT INTO `votacao` VALUES ('0b9a5b88-a7ee-43bd-bb36-053177f31ca1','Sim','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('0ffed321-e27c-48be-bd5a-afa3f68e547c','Sim','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('1b35daed-47dd-4838-be11-dccfa60b2b69','Nao','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('36b5fda5-368b-4acb-9caf-b08252ac84ed','Sim','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('6b189560-f9a7-4ae2-9e42-33fbc1299770','Sim','9627e954-fb5e-49a7-8237-354a7fb1ac24'),('7fdc3392-3466-46a5-bbba-0f5f230a6bb6','Nao','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('9079f9a0-dc34-48df-af07-4c869aeda620','Nao','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('c63cdd19-6cb6-405f-a391-e4324ab7e05c','Nao','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('e68c9306-8604-4304-8919-3230a1cd75a2','Sim','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8'),('e756f949-0fc2-45f6-93ca-b66db184a53c','Sim','9627e954-fb5e-49a7-8237-354a7fb1ac24'),('fe8522fc-57ba-42fb-aca2-6a690b4a3e76','Nao','07a4a2ac-dbdf-4cfa-8af2-ef5b8108a3f8');
+/*!40000 ALTER TABLE `votacao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
