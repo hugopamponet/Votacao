@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Pauta</title>
+  <link rel="stylesheet" href="css/cadastroPautas.css">
+</head>
+<body>
+  <h1>Cadastrar Nova Pauta</h1>
+
+  <form id="pautaForm">
+    <label for="titulo">Título:</label><br>
+    <input type="text" id="titulo" name="titulo" required><br><br>
+
+    <label for="descricao">Descrição:</label><br>
+    <textarea id="descricao" name="descricao" required></textarea><br><br>
+
+    <button type="submit">Cadastrar</button>
+    <button type="button" onclick="window.location.href='pauta.html'">Cancelar</button>
+  </form>
+
+  <script src="js/cadastroPautas.js"></script>
+</body>
+</html>

@@ -2,39 +2,20 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tabela de Reuniões</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Login - Sistema de votação</title>
+  <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-  <h1>Agenda de Reuniões</h1>
+  <form id="loginForm">
+	<h2>Sistema de votação</h2>
+    <label for="usuario">Usuário:</label><br>
+    <input type="text" id="usuario" name="usuario" required>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Empresa</th>
-        <th>Pauta</th>
-        <th>Tempo</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Empresa A</td>
-        <td>Apresentação do projeto</td>
-        <td>30 minutos</td>
-      </tr>
-      <tr>
-        <td>Empresa B</td>
-        <td>Negociação de contrato</td>
-        <td>45 minutos</td>
-      </tr>
-      <tr>
-        <td>Empresa C</td>
-        <td>Planejamento estratégico</td>
-        <td>1 hora</td>
-      </tr>
-      <!-- Adicione mais linhas conforme necessário -->
-    </tbody>
-  </table>
+    <label for="senha">Senha:</label><br>
+    <input type="password" id="senha" name="senha" required>
+
+    <button type="submit">Entrar</button>
+  </form>
+<script src="js/login.js"></script>
 </body>
 </html>

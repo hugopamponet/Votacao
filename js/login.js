@@ -8,16 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = document.getElementById("senha").value;
 
         try {
-            const response = await fetch("http://localhost:8080/portal/login", {
+            const response = await fetch("http://localhost:8080/auth/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ usuario: user, senha: password })
+                body: JSON.stringify({ user: user, senha: password })
             });
 
             const message = await response.text();
 
             if (response.ok) {
-                window.location.href = "index.html";
+                window.location.href = "pautas.html";
             } else {
                 alert(message);
             }

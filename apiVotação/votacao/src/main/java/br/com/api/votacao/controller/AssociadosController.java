@@ -1,6 +1,7 @@
 package br.com.api.votacao.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import br.com.api.votacao.service.AssociadosService;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public record AssociadosController(AssociadosService associadosService) {
 	
 	@PostMapping("/register")

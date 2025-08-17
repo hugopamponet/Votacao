@@ -1,8 +1,10 @@
 package br.com.api.votacao.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.votacao.DTO.PautaDTO;
+import br.com.api.votacao.DTO.PautaListaDTO;
 import br.com.api.votacao.enumeration.VotingEnum;
 import br.com.api.votacao.model.PautaModel;
 import br.com.api.votacao.model.VotacaoModel;
@@ -20,6 +23,7 @@ import br.com.api.votacao.service.PautaService;
 
 @RestController
 @RequestMapping("/pauta")
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public record PautaController(PautaService pautaService, PautaRepository pautaRepository,
 		VotacaoRepository votacaoRepository) {
 
@@ -28,9 +32,22 @@ public record PautaController(PautaService pautaService, PautaRepository pautaRe
 		return pautaService.descricao(dto);
 	}
 
-	@GetMapping
-	public List<PautaModel> listarPautas() {
-		return pautaRepository.findAll();
+	@GetMapping("/listar")
+	public List<PautaListaDTO> listarPautas() {
+		LocalDateTime agora = LocalDateTime.now();
+	    return pautaRepository.findAll().stream().map(pauta -> {
+	        long segundosRestantes = 0;
+	        if ("Aberta".equals(pauta.getStatus())) {
+	            long diff = java.time.Duration.between(agora, pauta.getTempoPauta().plusMinutes(1)).toMinutes();
+	            segundosRestantes = diff > 0 ? diff : 0;
+	        }
+	        return new PautaListaDTO(
+	            pauta.getTitulo(),
+	            pauta.getDescricao(),
+	            pauta.getStatus(),
+	            segundosRestantes
+	        );
+	    }).toList();
 	}
 
 	public ResponseEntity<PautaModel> buscarPauta(@PathVariable String id) {
