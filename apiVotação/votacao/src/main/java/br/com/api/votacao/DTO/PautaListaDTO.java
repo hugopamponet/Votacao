@@ -13,4 +13,5 @@ public class PautaListaDTO {
     private String descricao;
     private String status;
     private long tempoRestante;
+    private String tempoPautaFormatado;
 }

@@ -38,14 +38,15 @@ public record PautaController(PautaService pautaService, PautaRepository pautaRe
 	    return pautaRepository.findAll().stream().map(pauta -> {
 	        long segundosRestantes = 0;
 	        if ("Aberta".equals(pauta.getStatus())) {
-	            long diff = java.time.Duration.between(agora, pauta.getTempoPauta().plusMinutes(1)).toMinutes();
-	            segundosRestantes = diff > 0 ? diff : 0;
+	        	segundosRestantes = java.time.Duration.between(agora, pauta.getTempoPauta().plusMinutes(1)).getSeconds();
+	            segundosRestantes = segundosRestantes > 0 ? segundosRestantes : 0;
 	        }
 	        return new PautaListaDTO(
 	            pauta.getTitulo(),
 	            pauta.getDescricao(),
 	            pauta.getStatus(),
-	            segundosRestantes
+	            segundosRestantes,
+	            pauta.getTempoPautaFormatado()
 	        );
 	    }).toList();
 	}
