@@ -10,5 +10,4 @@ import br.com.api.votacao.model.VotacaoModel;
 public interface VotacaoRepository extends JpaRepository<VotacaoModel, String>{
 	
 	List<VotacaoModel> findByPauta(PautaModel pauta);
-
 }

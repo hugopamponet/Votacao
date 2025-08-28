@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", async () => {
             const tdStatus = document.createElement("td");
             tdStatus.textContent = p.status;
 
+            const tdResultado = document.createElement("td");
+            tdResultado.textContent = p.resultado;
+
             if (p.status === "Aberta") {
                 if (p.tempoRestante <= 0) {
                     tdTempo.textContent = "Tempo esgotado";
@@ -43,6 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             row.appendChild(tdDescricao);
             row.appendChild(tdTempo);
             row.appendChild(tdStatus);
+            row.appendChild(tdResultado);
             tbody.appendChild(row);
         });
 

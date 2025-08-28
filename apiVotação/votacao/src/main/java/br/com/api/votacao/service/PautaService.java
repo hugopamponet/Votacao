@@ -1,18 +1,28 @@
 package br.com.api.votacao.service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.api.votacao.DTO.PautaDTO;
 import br.com.api.votacao.model.PautaModel;
 import br.com.api.votacao.repository.PautaRepository;
+import br.com.api.votacao.repository.VotacaoRepository;
 
 @Service
-public record PautaService(PautaRepository pautaRepository) {
+public class PautaService {
 
+	@Autowired
+	private PautaRepository pautaRepository;
+	
+	@Autowired
+	private VotacaoRepository votacaoRepository;
+	
 	public ResponseEntity<String> descricao(PautaDTO dto) {
 		if(pautaRepository.existsByDescricao(dto.getDescricao())) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Pauta já cadastrada");
@@ -27,5 +37,24 @@ public record PautaService(PautaRepository pautaRepository) {
 		pautaRepository.save(pauta);
 		
 		return ResponseEntity.ok("Pauta cadastrada e aberta para votação por 1min.");
+	}
+	
+	@Transactional
+	public boolean deletarPorId(String id) {
+	    Optional<PautaModel> pautaOpt = pautaRepository.findById(id);
+	    
+	    if (pautaOpt.isEmpty()) {
+	        return false; // pauta não encontrada
+	    }
+
+	    PautaModel pauta = pautaOpt.get();
+
+	    var votacoes = votacaoRepository.findByPauta(pauta);
+	    if (!votacoes.isEmpty()) {
+	        votacaoRepository.deleteAll(votacoes);
+	    }
+
+	    pautaRepository.delete(pauta);
+	    return true;
 	}
 }
